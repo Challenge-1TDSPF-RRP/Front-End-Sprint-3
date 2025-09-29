@@ -8,6 +8,8 @@ import Error from './routes/Error/index.tsx';
 import Home from './routes/Home/index.tsx';
 import Login from "./routes/Login/index.tsx";
 import Register from "./routes/Register/index.tsx";
+import Consultas from './routes/Consulta/index.tsx';
+import EditarConsulta from "./routes/EditarConsulta/index.tsx"
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Login /> },
       { path: "/home", element: <Home/> },
       { path: "/register", element: <Register/> },
+      { path: "/consultas", element: <Consultas/>},
+      { path: "/editar/consultas/:id", element: <EditarConsulta/> }
     ],
   },
 ]);
