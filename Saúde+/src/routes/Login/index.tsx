@@ -1,31 +1,33 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../../types/tipouser";
+
 type LoginData = { cpf: string };
 
 function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginData>();
-
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginData>();
   const navigate = useNavigate();
 
-  const onSubmit = (data: LoginData) => {
-    const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find((u) => u.cpf === data.cpf);
+  const onSubmit = async (data: LoginData) => {
+    try {
+      const res = await fetch(`http://localhost:3001/users?cpf=${data.cpf}`);
+      const users: User[] = await res.json();
 
-    if (!user) {
-      alert("CPF não encontrado!");
-      return;
+      if (users.length === 0) {
+        alert("CPF não encontrado!");
+        return;
+      }
+
+      // Simula login salvando usuário logado no localStorage
+      localStorage.setItem("loggedUser", JSON.stringify(users[0]));
+      navigate("/home");
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao tentar logar.");
     }
-
-    localStorage.setItem("loggedUser", JSON.stringify(user));
-    navigate("/home");
   };
 
-   return (
+  return (
     <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
