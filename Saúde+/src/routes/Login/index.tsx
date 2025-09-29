@@ -17,10 +17,7 @@ function Login() {
         alert("CPF não encontrado!");
         return;
       }
-
-      // Simula login salvando usuário logado no localStorage
-      localStorage.setItem("loggedUser", JSON.stringify(users[0]));
-      navigate("/home");
+      
     } catch (error) {
       console.error(error);
       alert("Erro ao tentar logar.");

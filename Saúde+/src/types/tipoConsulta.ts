@@ -4,5 +4,4 @@ export type Consulta = {
   hora: string;
   status: string;
   motivo: string;
-  paciente: string;
 }
