@@ -25,7 +25,7 @@ function Register() {
       });
 
       alert("Cadastro realizado com sucesso!");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error(error);
       alert("Erro ao cadastrar usuário.");
