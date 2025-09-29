@@ -25,21 +25,23 @@ function Login() {
     navigate("/home");
   };
 
-  return (
+   return (
     <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>CPF</label>
         <input
-          {...register("cpf", {
-            required: "CPF é obrigatório",
-            pattern: { value: /^\d{11}$/, message: "CPF deve conter 11 dígitos" },
-          })}
+          placeholder="CPF"
+          {...register("cpf", { required: "CPF é obrigatório", pattern: { value: /^\d{11}$/, message: "CPF deve conter 11 dígitos" } })}
         />
         {errors.cpf && <p>{errors.cpf.message}</p>}
 
         <button type="submit">Entrar</button>
       </form>
+
+      {/* Botão para ir para o cadastro */}
+      <button onClick={() => navigate("/register")} style={{ marginTop: "10px" }}>
+        Ir para Cadastro
+      </button>
     </div>
   );
 }

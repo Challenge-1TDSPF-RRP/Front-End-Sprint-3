@@ -23,7 +23,7 @@ function Register() {
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Cadastro realizado com sucesso!");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -76,8 +76,8 @@ function Register() {
           {...register("phone", {
             required: "Telefone é obrigatório",
             pattern: {
-              value: /^\d{10,13}$/,
-              message: "Telefone deve conter entre 10 e 13 números",
+              value: /^\d{11}$/,
+              message: "Telefone deve conter 11 números",
             },
           })}
         />
@@ -85,6 +85,10 @@ function Register() {
 
         <button type="submit">Cadastrar</button>
       </form>
+
+      <button onClick={() => navigate("/")} style={{ marginTop: "10px" }}>
+        Ir para Login
+      </button>
     </div>
   );
 }
