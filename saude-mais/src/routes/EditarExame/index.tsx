@@ -114,7 +114,7 @@ export default function EditarExame() {
 
       <label>
         Local:
-        <input type="text" name="local" placeholder="Local" value={form.local} />
+        <input type="text" name="local" placeholder="Local" value={form.local} onChange={handleChange} required/>
       </label>
 
       <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>

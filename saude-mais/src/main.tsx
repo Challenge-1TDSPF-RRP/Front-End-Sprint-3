@@ -10,6 +10,8 @@ import Login from "./routes/Login/index.tsx";
 import Register from "./routes/Register/index.tsx";
 import Consultas from './routes/Consulta/index.tsx';
 import EditarConsulta from "./routes/EditarConsulta/index.tsx"
+import Exame from "./routes/Exame/index.tsx"
+import EditarExame from './routes/EditarExame/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,10 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register/> },
       { path: "/consultas", element: <Consultas/>},
       { path: "/editar/consultas", element: <EditarConsulta/> },
-      { path: "/editar/consultas/:id", element: <EditarConsulta/> }
+      { path: "/editar/consultas/:id", element: <EditarConsulta/> },
+      { path: "/exames", element: <Exame/>},
+      { path: "/editar/exames", element: <EditarExame/> },
+      { path: "/editar/exames/:id", element: <EditarExame/> }
     ],
   },
 ]);

@@ -18,6 +18,23 @@
       "motivo": "teste cadastro"
     }
   ],
-  "exames": [],
+  "exames": [
+    {
+      "id": "ead9",
+      "data": "2025-09-30",
+      "hora": "09:03",
+      "status": "teste cadastro",
+      "tipo": "teste cadastro",
+      "local": "teste cadastro"
+    },
+    {
+      "id": "6155",
+      "data": "2025-09-30",
+      "hora": "09:19",
+      "status": "teste",
+      "tipo": "teste",
+      "local": "teste"
+    }
+  ],
   "receitas": []
 }

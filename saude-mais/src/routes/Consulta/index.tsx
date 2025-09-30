@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import type { Consulta } from "../../types/tipoConsulta";
 
 
-export default function Consultas() {
+export default function Consulta() {
   const [consultas, setConsultas] = useState<Consulta[]>([]);
   const navigate = useNavigate();
 
@@ -26,20 +26,23 @@ export default function Consultas() {
           </button>
         </div>
       ) : (
-        <ul>
-          {consultas.map(c => (
-            <li key={c.id} style={{ marginBottom: "10px" }}>
-              <strong>Data:</strong> {c.data} | <strong>Hora:</strong> {c.hora} |
-              <strong>Status:</strong> {c.status} | <strong>Motivo:</strong> {c.motivo} |
-              <button
-                onClick={() => navigate(`/editar/consultas/${c.id}`)}
-                style={{ marginLeft: "10px" }}
-              >
-                Editar
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {consultas.map(c => (
+              <li key={c.id} style={{ marginBottom: "10px" }}>
+                <strong>Data:</strong> {c.data} | <strong>Hora:</strong> {c.hora} |
+                <strong>Status:</strong> {c.status} | <strong>Motivo:</strong> {c.motivo} |
+                <button onClick={() => navigate(`/editar/consultas/${c.id}`)} style={{ marginLeft: "10px" }}>
+                  Editar
+                </button>
+                </li>
+              ))}
+            </ul>
+
+            <button onClick={() => navigate("/editar/consultas")} style={{ marginTop: "20px" }}>
+              Adicionar Nova Consulta
+            </button>
+        </div>
       )}
     </div>
   );
