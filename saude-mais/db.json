@@ -44,5 +44,14 @@
       "local": "teste"
     }
   ],
-  "receitas": []
+  "receitas": [
+    {
+      "id": "6d46",
+      "dataEmissao": "2025-09-30",
+      "medicamento": "teste",
+      "dosagem": "200mg",
+      "frequencia": "2x ao dia",
+      "duracao": "5 dias"
+    }
+  ]
 }

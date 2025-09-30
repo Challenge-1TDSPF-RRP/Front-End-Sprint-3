@@ -99,7 +99,7 @@ export default function EditarReceita() {
 
       <label>
         Medicamento:
-        <input type="time" name="medicamento" placeholder="Medicamento" value={form.medicamento} onChange={handleChange} required />
+        <input type="text" name="medicamento" placeholder="Medicamento" value={form.medicamento} onChange={handleChange} required />
       </label>
 
       <label>
