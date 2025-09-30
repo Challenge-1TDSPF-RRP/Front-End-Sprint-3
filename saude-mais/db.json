@@ -9,7 +9,15 @@
       "phone": "11111111111"
     }
   ],
-  "consultas": [],
+  "consultas": [
+    {
+      "id": "8dfe",
+      "data": "2025-09-18",
+      "hora": "20:24",
+      "status": "teste editar",
+      "motivo": "teste cadastro"
+    }
+  ],
   "exames": [],
   "receitas": []
 }
