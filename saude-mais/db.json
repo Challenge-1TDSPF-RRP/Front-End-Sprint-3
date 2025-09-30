@@ -7,6 +7,14 @@
       "birthDate": "1111-11-11",
       "gender": "Masculino",
       "phone": "11111111111"
+    },
+    {
+      "id": "36cd",
+      "name": "teste",
+      "cpf": "22222222222",
+      "birthDate": "2025-09-30",
+      "gender": "Masculino",
+      "phone": "11999999999"
     }
   ],
   "consultas": [
