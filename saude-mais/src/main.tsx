@@ -12,6 +12,8 @@ import Consultas from './routes/Consulta/index.tsx';
 import EditarConsulta from "./routes/EditarConsulta/index.tsx"
 import Exame from "./routes/Exame/index.tsx"
 import EditarExame from './routes/EditarExame/index.tsx';
+import ReceitaMedica from './routes/ReceitaMedica/index.tsx';
+import EditarReceita from './routes/EditarReceita/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,10 @@ const router = createBrowserRouter([
       { path: "/editar/consultas/:id", element: <EditarConsulta/> },
       { path: "/exames", element: <Exame/>},
       { path: "/editar/exames", element: <EditarExame/> },
-      { path: "/editar/exames/:id", element: <EditarExame/> }
+      { path: "/editar/exames/:id", element: <EditarExame/> },
+      { path: "/receitas", element: <ReceitaMedica/>},
+      { path: "/editar/receitas", element: <EditarReceita/>},
+      { path: "/editar/receitas/:id", element: <EditarReceita/>}
     ],
   },
 ]);
