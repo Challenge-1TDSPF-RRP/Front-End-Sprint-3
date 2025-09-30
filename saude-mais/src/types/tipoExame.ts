@@ -5,5 +5,4 @@ export type Exame = {
   status: string;
   tipo: string;
   local: string;
-  paciente: string;
 }
