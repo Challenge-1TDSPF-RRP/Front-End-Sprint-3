@@ -5,5 +5,4 @@ export type Receita = {
   dosagem: string;
   frequencia: string;
   duracao: string;
-  paciente: string;
 }
