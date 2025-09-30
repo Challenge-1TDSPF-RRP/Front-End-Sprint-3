@@ -7,6 +7,7 @@ export default function Menu(){
             <Link to="/home">Home </Link>| 
             <Link to="/consultas">Consultas</Link>
             <Link to="/exames">Exames</Link>
+            <Link to="/receitas">Receitas</Link>
         </nav>
     );
 }
