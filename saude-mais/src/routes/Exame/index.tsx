@@ -1,6 +1,8 @@
 import { useEffect, useState,} from "react";
 import { useNavigate } from "react-router-dom";
 import type { Exame } from "../../types/tipoExame";
+import ExameProps from "../../components/ExameProps.tsx/ExameProps";
+import Botao from "../../components/BotaoProps/BotaoProps";
 
 export default function Exame() {
   const [exames, setExames] = useState<Exame[]>([]);
@@ -26,21 +28,14 @@ export default function Exame() {
         </div>
       ) : (
         <div>
-            <ul>
+          <ul>
             {exames.map(e => (
-                <li key={e.id} style={{ marginBottom: "10px" }}>
-                <strong>Data: </strong> {e.data} | <strong>Hora: </strong> {e.hora} |
-                <strong>Status: </strong> {e.status} | <strong>Tipo: </strong> {e.tipo} | <strong>Local: </strong> {e.local}
-                <button onClick={() => navigate(`/editar/exames/${e.id}`)} style={{ marginLeft: "10px" }}>
-                    Editar
-                </button>
-                </li>
-            ))}
-            </ul>
-
-            <button onClick={() => navigate("/editar/exames")} style={{ marginTop: "20px" }}>
-                Adicionar Novo Exame
-            </button>
+              <ExameProps key={e.id} exame={e} />
+              ))}
+          </ul>
+                
+          <Botao texto="Adicionar Novo Exame" onClick={() => navigate("/editar/exames")} />
+          
         </div>
       )}
     </div>

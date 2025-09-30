@@ -1,6 +1,8 @@
 import { useEffect, useState,} from "react";
 import { useNavigate } from "react-router-dom";
 import type { Receita } from "../../types/tipoReceita";
+import Botao from "../../components/BotaoProps/BotaoProps";
+import ReceitaProps from "../../components/ReceitaProps/ReceitaProps";
 
 export default function ReceitaMedica() {
   const [receitas, setReceitas] = useState<Receita[]>([]);
@@ -26,21 +28,13 @@ export default function ReceitaMedica() {
         </div>
       ) : (
         <div>
-            <ul>
+          <ul>
             {receitas.map(r => (
-                <li key={r.id} style={{ marginBottom: "10px" }}>
-                <strong>Data de Emissão: </strong> {r.dataEmissao} | <strong>Medicamento: </strong> {r.medicamento} |
-                <strong>Dosagem: </strong> {r.dosagem} | <strong>Frequência: </strong> {r.frequencia} | <strong>Duração do tratamento: </strong> {r.duracao}
-                <button onClick={() => navigate(`/editar/receitas/${r.id}`)} style={{ marginLeft: "10px" }}>
-                    Editar
-                </button>
-                </li>
-            ))}
-            </ul>
+              <ReceitaProps key={r.id} receita={r} />
+              ))}
+          </ul>
 
-            <button onClick={() => navigate("/editar/receitas")} style={{ marginTop: "20px" }}>
-                Adicionar Nova Receita
-            </button>
+          <Botao texto="Adicionar Nova Receita" onClick={() => navigate("/editar/receitas")}/>
         </div>
       )}
     </div>
