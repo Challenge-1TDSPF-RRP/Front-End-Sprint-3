@@ -8,6 +8,7 @@ export default function Menu(){
             <Link to="/consultas">Consultas</Link>
             <Link to="/exames">Exames</Link>
             <Link to="/receitas">Receitas</Link>
+            <Link to="/faq">Faq</Link>
         </nav>
     );
 }
