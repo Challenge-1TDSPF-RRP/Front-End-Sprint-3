@@ -11,6 +11,7 @@ export default function Menu(){
             <Link to="/faq">Faq</Link>
             <Link to="/paciente">Perfil</Link>
             <Link to="/integrantes">Integrantes</Link>
+            <Link to="/contatos">Contatos</Link>
         </nav>
     );
 }
