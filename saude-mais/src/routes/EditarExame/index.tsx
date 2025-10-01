@@ -1,3 +1,4 @@
+// pages/EditarExame.tsx
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Exame } from "../../types/tipoExame";
@@ -14,7 +15,6 @@ export default function EditarExame() {
     local: "",
   });
 
-  // Carregar dados existentes se houver id
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3001/exames/${id}`)
@@ -74,7 +74,7 @@ export default function EditarExame() {
       });
 
       if (resposta.ok) {
-        alert("Exame excluido!");
+        alert("Exame excluído!");
         navigate("/exames");
       } else {
         alert("Erro ao excluir exame");
@@ -85,98 +85,98 @@ export default function EditarExame() {
   };
 
   return (
-    <main>
-      <div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            salvarExame();
-          }}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-            maxWidth: "400px",
-          }}
+    <main className="flex justify-center items-center bg-blue-200 w-[100vw] h-[85vh]">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          salvarExame();
+        }}
+        className="bg-gray-50 p-8 rounded-lg shadow-md flex flex-col gap-4 w-full max-w-md"
+      >
+        <h1 className="text-blue-300 text-xl font-bold mb-4">
+          {id ? "Editar Exame" : "Cadastrar Exame"}
+        </h1>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Data:</span>
+          <input
+            type="date"
+            name="data"
+            value={form.data}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Hora:</span>
+          <input
+            type="time"
+            name="hora"
+            value={form.hora}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Status:</span>
+          <input
+            type="text"
+            name="status"
+            placeholder="Status"
+            value={form.status}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Tipo:</span>
+          <input
+            type="text"
+            name="tipo"
+            placeholder="Tipo"
+            value={form.tipo}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Local:</span>
+          <input
+            type="text"
+            name="local"
+            placeholder="Local"
+            value={form.local}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <button
+          type="submit"
+          className="bg-blue-400 text-white font-bold py-2 rounded hover:bg-blue-500 transition"
         >
-          <h1>{id ? "Editar Exame" : "Cadastrar Exame"}</h1>
+          {id ? "Atualizar" : "Cadastrar"}
+        </button>
 
-          <label>
-            Data:
-            <input
-              type="date"
-              name="data"
-              value={form.data}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Hora:
-            <input
-              type="time"
-              name="hora"
-              value={form.hora}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Status:
-            <input
-              type="text"
-              name="status"
-              placeholder="Status"
-              value={form.status}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Tipo:
-            <input
-              type="text"
-              name="tipo"
-              placeholder="Tipo"
-              value={form.tipo}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Local:
-            <input
-              type="text"
-              name="local"
-              placeholder="Local"
-              value={form.local}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>
-
-          {/* Botão de excluir só aparece se estamos editando */}
-          {id && (
-            <button
-              type="button"
-              onClick={excluirExame}
-              style={{
-                marginTop: "10px",
-                backgroundColor: "red",
-                color: "white",
-              }}
-            >
-              Excluir Exame
-            </button>
-          )}
-        </form>
-      </div>
+        {id && (
+          <button
+            type="button"
+            onClick={excluirExame}
+            className="bg-red-500 text-white font-bold py-2 rounded hover:bg-red-600 transition"
+          >
+            Excluir Exame
+          </button>
+        )}
+      </form>
     </main>
   );
 }

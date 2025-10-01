@@ -1,3 +1,4 @@
+// pages/EditarReceita.tsx
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Receita } from "../../types/tipoReceita";
@@ -14,7 +15,6 @@ export default function EditarReceita() {
     duracao: "",
   });
 
-  // Carregar dados existentes se houver id
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3001/receitas/${id}`)
@@ -75,12 +75,12 @@ export default function EditarReceita() {
     if (!confirm) return;
 
     try {
-      const resposta = await fetch(`http://localhost:3001/receita/${id}`, {
+      const resposta = await fetch(`http://localhost:3001/receitas/${id}`, {
         method: "DELETE",
       });
 
       if (resposta.ok) {
-        alert("Receita excluida!");
+        alert("Receita excluída!");
         navigate("/receitas");
       } else {
         alert("Erro ao excluir receita");
@@ -91,100 +91,95 @@ export default function EditarReceita() {
   };
 
   return (
-    <main>
-      <div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            salvarReceita();
-          }}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-            maxWidth: "400px",
-          }}
+    <main className="flex justify-center items-center bg-blue-200 w-[100vw] h-[85vh]">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          salvarReceita();
+        }}
+        className="bg-gray-50 p-8 rounded-lg shadow-md flex flex-col gap-4 w-full max-w-md"
+      >
+        <h1 className="text-blue-300 text-xl font-bold mb-4">
+          {id ? "Editar Receita" : "Cadastrar Receita"}
+        </h1>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Data de Emissão:</span>
+          <input
+            type="date"
+            name="dataEmissao"
+            value={form.dataEmissao}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Medicamento:</span>
+          <input
+            type="text"
+            name="medicamento"
+            value={form.medicamento}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Dosagem:</span>
+          <input
+            type="text"
+            name="dosagem"
+            value={form.dosagem}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Frequência:</span>
+          <input
+            type="text"
+            name="frequencia"
+            value={form.frequencia}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="font-semibold text-gray-700">Duração:</span>
+          <input
+            type="text"
+            name="duracao"
+            value={form.duracao}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            required
+          />
+        </label>
+
+        <button
+          type="submit"
+          className="bg-blue-400 text-white font-bold py-2 rounded hover:bg-blue-500 transition"
         >
-          <h1>{id ? "Editar receita" : "Cadastrar receita"}</h1>
+          {id ? "Atualizar" : "Cadastrar"}
+        </button>
 
-          <label>
-            Data de emissão:
-            <input
-              type="date"
-              name="dataEmissao"
-              placeholder="Data de emissão"
-              value={form.dataEmissao}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Medicamento:
-            <input
-              type="text"
-              name="medicamento"
-              placeholder="Medicamento"
-              value={form.medicamento}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Dosagem:
-            <input
-              type="text"
-              name="dosagem"
-              placeholder="Dosagem"
-              value={form.dosagem}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Frequência:
-            <input
-              type="text"
-              name="frequencia"
-              placeholder="Frequência"
-              value={form.frequencia}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Duração do tratamento:
-            <input
-              type="text"
-              name="duracao"
-              placeholder="Duração do tratamento"
-              value={form.duracao}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>
-
-          {/* Botão de excluir só aparece se estamos editando */}
-          {id && (
-            <button
-              type="button"
-              onClick={excluirReceita}
-              style={{
-                marginTop: "10px",
-                backgroundColor: "red",
-                color: "white",
-              }}
-            >
-              Excluir Receita
-            </button>
-          )}
-        </form>
-      </div>
+        {id && (
+          <button
+            type="button"
+            onClick={excluirReceita}
+            className="bg-red-500 text-white font-bold py-2 rounded hover:bg-red-600 transition"
+          >
+            Excluir Receita
+          </button>
+        )}
+      </form>
     </main>
   );
 }

@@ -21,13 +21,6 @@
   ],
   "consultas": [
     {
-      "id": "1c18",
-      "data": "2025-10-01",
-      "hora": "14:56",
-      "status": "teste",
-      "motivo": "teste"
-    },
-    {
       "id": "9350",
       "data": "2025-10-01",
       "hora": "14:56",
