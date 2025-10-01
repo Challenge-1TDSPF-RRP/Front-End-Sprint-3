@@ -7,15 +7,8 @@ type BotaoProps = {
 export default function Botao({ texto, onClick, cor = "Gray" }: BotaoProps) {
   return (
     <button
+      className="bg-blue-400 text-white font-bold py-2 px-3 rounded hover:bg-blue-500 transition"
       onClick={onClick}
-      style={{
-        backgroundColor: cor,
-        color: "white",
-        border: "none",
-        padding: "8px 12px",
-        borderRadius: "4px",
-        marginTop: "10px"
-      }}
     >
       {texto}
     </button>

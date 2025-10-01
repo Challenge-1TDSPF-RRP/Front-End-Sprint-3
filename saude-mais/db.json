@@ -1,6 +1,53 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "91fb",
+      "name": "teste",
+      "cpf": "11111111111",
+      "birthDate": "2025-10-01",
+      "gender": "Masculino",
+      "phone": "11111111111"
+    }
+  ],
   "receitas": [],
-  "consultas": [],
-  "exames": []
+  "consultas": [
+    {
+      "id": "1c18",
+      "data": "2025-10-01",
+      "hora": "14:56",
+      "status": "teste",
+      "motivo": "teste"
+    },
+    {
+      "id": "9350",
+      "data": "2025-10-01",
+      "hora": "14:56",
+      "status": "teste 1",
+      "motivo": "teste 1"
+    },
+    {
+      "id": "17fd",
+      "data": "2025-10-01",
+      "hora": "14:57",
+      "status": "teste 2",
+      "motivo": "teste 2"
+    },
+    {
+      "id": "95d2",
+      "data": "2025-10-01",
+      "hora": "14:57",
+      "status": "teste 3",
+      "motivo": "teste 3"
+    }
+  ],
+  "exames": [
+    {
+      "id": "0ca4",
+      "data": "2025-10-01",
+      "hora": "15:05",
+      "status": "teste",
+      "tipo": "teste",
+      "local": "teste"
+    }
+  ]
 }
