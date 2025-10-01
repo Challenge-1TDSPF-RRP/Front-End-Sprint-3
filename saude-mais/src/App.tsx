@@ -8,10 +8,10 @@ export default function App() {
   const isRegisterPage = location.pathname === '/register';
 
   return (
-    <>
+    <div className="container">
       {!isLoginPage && !isRegisterPage && <Header />}
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 }
