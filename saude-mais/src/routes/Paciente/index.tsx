@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import type { User } from "../../types/tipouser";
 
 export default function Paciente() {
+
+  useEffect(() => {
+    document.title = "Perfil";
+  }, []);
+
   const [user, setUser] = useState<User | null>(null);
   const [editMode, setEditMode] = useState(false);
   const [form, setForm] = useState<Partial<User>>({});

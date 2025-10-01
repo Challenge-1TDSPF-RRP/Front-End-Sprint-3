@@ -9,6 +9,10 @@ export default function Consulta() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Consultas";
+  }, []);
+
+  useEffect(() => {
     fetch("http://localhost:3001/consultas")
       .then((res) => res.json())
       .then((data) => setConsultas(data))

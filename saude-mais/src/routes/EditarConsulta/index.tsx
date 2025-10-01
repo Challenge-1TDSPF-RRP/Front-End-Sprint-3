@@ -4,6 +4,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import type { Consulta } from "../../types/tipoConsulta";
 
 export default function EditarConsultas() {
+  useEffect(() => {
+    document.title = "Editar Consulta";
+  }, []);
+
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 

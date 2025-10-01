@@ -6,6 +6,11 @@ import Botao from "../../components/BotaoProps/BotaoProps";
 import ReceitaProps from "../../components/ReceitaProps/ReceitaProps";
 
 export default function ReceitaMedica() {
+
+  useEffect(() => {
+    document.title = "Receitas Médicas";
+  }, []);
+
   const [receitas, setReceitas] = useState<Receita[]>([]);
   const navigate = useNavigate();
 

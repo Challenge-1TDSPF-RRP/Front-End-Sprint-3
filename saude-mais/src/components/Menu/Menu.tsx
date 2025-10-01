@@ -51,6 +51,12 @@ export default function Menu() {
       >
         Contatos
       </Link>
+      <Link
+        to="/sobre"
+        className="bg-blue-400 text-white px-1 py-2 rounded font-bold hover:bg-blue-500 transition"
+      >
+        Sobre
+      </Link>
     </nav>
   );
 }

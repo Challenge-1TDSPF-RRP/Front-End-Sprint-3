@@ -6,8 +6,14 @@ import youtube from "../../img/youtube.svg";
 import instagram from "../../img/instagram.svg";
 import x from "../../img/x.svg";
 import linkedin from "../../img/linkedin.svg";
+import { useEffect } from "react";
 
 export default function Contato() {
+
+  useEffect(() => {
+      document.title = "Contatos";
+    }, []);
+
   return (
     <main className="bg-blue-200 h-[80vh] w-[100vw] flex justify-center items-center py-10 px-4">
       <section className="bg-gray-50 p-8 rounded-lg shadow-md h-[60vh] max-w-3xl flex flex-col gap-8">

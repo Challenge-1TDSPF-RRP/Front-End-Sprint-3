@@ -4,6 +4,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import type { Receita } from "../../types/tipoReceita";
 
 export default function EditarReceita() {
+
+  useEffect(() => {
+    document.title = "Editar Receita Médica";
+  }, []);
+
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 

@@ -4,6 +4,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import type { Exame } from "../../types/tipoExame";
 
 export default function EditarExame() {
+
+  useEffect(() => {
+    document.title = "Editar Exame";
+  }, []);
+
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 

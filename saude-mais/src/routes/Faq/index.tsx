@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+
 export default function Faq() {
+
+  useEffect(() => {
+      document.title = "Faq";
+    }, []);
+    
   const faqs = [
     {
       question: "O que é este site auxiliar ao HC?",

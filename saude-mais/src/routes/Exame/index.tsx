@@ -5,6 +5,11 @@ import ExameProps from "../../components/ExameProps/ExameProps";
 import Botao from "../../components/BotaoProps/BotaoProps";
 
 export default function Exame() {
+
+  useEffect(() => {
+    document.title = "Exames";
+  }, []);
+
   const [exames, setExames] = useState<Exame[]>([]);
   const navigate = useNavigate();
 

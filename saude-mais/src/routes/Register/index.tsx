@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../../types/tipouser";
+import { useEffect } from "react";
 
 export default function Register() {
+
+  useEffect(() => {
+      document.title = "Cadastro";
+    }, []);
+    
   const {
     register,
     handleSubmit,
