@@ -16,6 +16,7 @@ import ReceitaMedica from './routes/ReceitaMedica/index.tsx';
 import EditarReceita from './routes/EditarReceita/index.tsx';
 import Faq from './routes/Faq/index.tsx';
 import Paciente from './routes/Paciente/index.tsx';
+import Integrantes from './routes/Integrantes/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
       { path: "/editar/receitas", element: <EditarReceita/>},
       { path: "/editar/receitas/:id", element: <EditarReceita/>},
       { path: "/faq", element: <Faq/>},
-      { path: "/paciente", element: <Paciente/>}
+      { path: "/paciente", element: <Paciente/>},
+      { path: "/integrantes", element: <Integrantes/>}
     ],
   },
 ]);
