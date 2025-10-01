@@ -13,10 +13,6 @@
         }
     }
 
-    & main{
-        @apply bg-blue-200 text-white h-[60vh] w-[100vw] overflow-auto;
-    }
-
     & footer{
         @apply bg-blue-300 text-white h-[20vh] w-[100vw];
     }
