@@ -9,7 +9,16 @@
       "phone": "11111111111"
     }
   ],
-  "receitas": [],
+  "receitas": [
+    {
+      "id": "791d",
+      "dataEmissao": "2025-10-01",
+      "medicamento": "teste",
+      "dosagem": "200ml",
+      "frequencia": "1x ao dia",
+      "duracao": "1 semana"
+    }
+  ],
   "consultas": [
     {
       "id": "1c18",

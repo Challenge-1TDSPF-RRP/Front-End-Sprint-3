@@ -10,7 +10,7 @@ export default function ExameProps({ exame }: Props) {
 
   return (
     <li className="flex justify-between items-center bg-blue-100 p-4 rounded mb-3 shadow hover:shadow-md transition-shadow">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-gray-700">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-gray-700 flex-wrap">
         <span>
           <strong>Data:</strong> {exame.data}
         </span>
