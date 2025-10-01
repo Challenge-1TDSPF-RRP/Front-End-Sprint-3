@@ -6,7 +6,7 @@
     @apply w-[100vw] h-[100vh] flex flex-col justify-between;
 
     & header{
-        @apply bg-blue-400 text-white h-[20vh] w-[100vw];
+        @apply h-[10vh] w-[100vw];
 
         & a:hover{
             @apply bg-blue-500;
@@ -14,7 +14,7 @@
     }
 
     & footer{
-        @apply bg-blue-300 text-white h-[20vh] w-[100vw];
+        @apply bg-blue-300 text-white h-[10vh] w-[100vw];
     }
 
 }
