@@ -22,8 +22,8 @@ Entre as funcionalidades já implementadas estão:
   - `/pages` → páginas principais do sistema (Login, Cadastro, Home, Consultas, Exames, Receitas, FAQ, Sobre, Contato, Integrantes, Perfil do Paciente)  
   - `/types` → tipagem das entidades (`tipoConsulta`, `tipoExame`, `tipoReceita`, `tipoUser`)  
   - `/img` → imagens e ícones utilizados  
-- `App.tsx` → gerenciamento de rotas  
-- `main.tsx` → renderização da aplicação  
+- `App.tsx` → renderização da aplicação
+- `main.tsx` → gerenciamento de rotas 
 
 ---
 
