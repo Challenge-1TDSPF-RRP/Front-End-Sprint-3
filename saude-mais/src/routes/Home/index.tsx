@@ -14,7 +14,7 @@ export default function Home() {
     { title: "Receitas Médicas", description: "Visualizar e gerenciar receitas", route: "/receitas" },
     { title: "Perfil do Paciente", description: "Atualizar informações pessoais", route: "/paciente" },
     { title: "FAQ", description: "Perguntas frequentes", route: "/faq" },
-    { title: "Contatos", description: "Entre em contato com o HC e nossa equipe", route: "/contato" },
+    { title: "Contatos", description: "Entre em contato com o HC e nossa equipe", route: "/contatos" },
   ];
 
   return (
