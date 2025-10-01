@@ -11,20 +11,22 @@ export default function Paciente() {
   useEffect(() => {
     const usuarioId = localStorage.getItem("usuarioId");
     if (!usuarioId) {
-      navigate("/"); 
+      navigate("/");
       return;
     }
 
     fetch(`http://localhost:3001/users/${usuarioId}`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setUser(data);
         setForm(data);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }, [navigate]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -53,11 +55,18 @@ export default function Paciente() {
   if (!user) return <p>Carregando...</p>;
 
   return (
-    <div>
+    <main>
       <h1>Perfil do Paciente</h1>
 
       {editMode ? (
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px", maxWidth: "400px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            maxWidth: "400px",
+          }}
+        >
           <input
             name="name"
             value={form.name || ""}
@@ -76,7 +85,11 @@ export default function Paciente() {
             value={form.birthDate || ""}
             onChange={handleChange}
           />
-          <select name="gender" value={form.gender || ""} onChange={handleChange}>
+          <select
+            name="gender"
+            value={form.gender || ""}
+            onChange={handleChange}
+          >
             <option value="">Selecione</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
@@ -93,14 +106,24 @@ export default function Paciente() {
         </div>
       ) : (
         <div>
-          <p><strong>Nome:</strong> {user.name}</p>
-          <p><strong>CPF:</strong> {user.cpf}</p>
-          <p><strong>Data de Nascimento:</strong> {user.birthDate}</p>
-          <p><strong>Gênero:</strong> {user.gender}</p>
-          <p><strong>Telefone:</strong> {user.phone}</p>
+          <p>
+            <strong>Nome:</strong> {user.name}
+          </p>
+          <p>
+            <strong>CPF:</strong> {user.cpf}
+          </p>
+          <p>
+            <strong>Data de Nascimento:</strong> {user.birthDate}
+          </p>
+          <p>
+            <strong>Gênero:</strong> {user.gender}
+          </p>
+          <p>
+            <strong>Telefone:</strong> {user.phone}
+          </p>
           <button onClick={() => setEditMode(true)}>Editar Informações</button>
         </div>
       )}
-    </div>
+    </main>
   );
 }

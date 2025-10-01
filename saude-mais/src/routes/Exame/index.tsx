@@ -1,4 +1,4 @@
-import { useEffect, useState,} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Exame } from "../../types/tipoExame";
 import ExameProps from "../../components/ExameProps.tsx/ExameProps";
@@ -10,13 +10,13 @@ export default function Exame() {
 
   useEffect(() => {
     fetch("http://localhost:3001/exames")
-      .then(res => res.json())
-      .then(data => setExames(data))
-      .catch(err => console.error("Erro ao buscar exames:", err));
+      .then((res) => res.json())
+      .then((data) => setExames(data))
+      .catch((err) => console.error("Erro ao buscar exames:", err));
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Exames</h1>
 
       {exames.length === 0 ? (
@@ -29,15 +29,17 @@ export default function Exame() {
       ) : (
         <div>
           <ul>
-            {exames.map(e => (
+            {exames.map((e) => (
               <ExameProps key={e.id} exame={e} />
-              ))}
+            ))}
           </ul>
-                
-          <Botao texto="Adicionar Novo Exame" onClick={() => navigate("/editar/exames")} />
-          
+
+          <Botao
+            texto="Adicionar Novo Exame"
+            onClick={() => navigate("/editar/exames")}
+          />
         </div>
       )}
-    </div>
+    </main>
   );
 }

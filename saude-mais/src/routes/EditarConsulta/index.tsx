@@ -10,19 +10,19 @@ export default function EditarConsultas() {
     data: "",
     hora: "",
     status: "",
-    motivo: ""
+    motivo: "",
   });
 
   // Carregar dados existentes se houver id
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3001/consultas/${id}`)
-        .then(res => {
+        .then((res) => {
           if (!res.ok) throw new Error("Consulta não encontrada");
           return res.json();
         })
-        .then(data => setForm(data))
-        .catch(err => console.error("Erro ao buscar consulta:", err));
+        .then((data) => setForm(data))
+        .catch((err) => console.error("Erro ao buscar consulta:", err));
     }
   }, [id]);
 
@@ -31,7 +31,7 @@ export default function EditarConsultas() {
   };
 
   const salvarConsulta = async () => {
-    if (!form.data || !form.hora || !form.status || !form.motivo ) {
+    if (!form.data || !form.hora || !form.status || !form.motivo) {
       alert("Preencha todos os campos!");
       return;
     }
@@ -63,12 +63,14 @@ export default function EditarConsultas() {
   const excluirConsulta = async () => {
     if (!id) return;
 
-    const confirm = window.confirm("Tem certeza que deseja excluir esta consulta?");
+    const confirm = window.confirm(
+      "Tem certeza que deseja excluir esta consulta?"
+    );
     if (!confirm) return;
 
     try {
       const resposta = await fetch(`http://localhost:3001/consultas/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
       });
 
       if (resposta.ok) {
@@ -83,47 +85,86 @@ export default function EditarConsultas() {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        salvarConsulta();
-      }}
-      style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "400px" }}
-    >
-      <h1>{id ? "Editar Consulta" : "Cadastrar Consulta"}</h1>
-
-      <label>
-        Data:
-        <input type="date" name="data" value={form.data} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Hora:
-        <input type="time" name="hora" value={form.hora} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Status:
-        <input type="text" name="status" placeholder="Status" value={form.status} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Motivo:
-        <input type="text" name="motivo" placeholder="Motivo" value={form.motivo} onChange={handleChange} required />
-      </label>
-
-      <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>
-
-      {/* Botão de excluir só aparece se estamos editando */}
-      {id && (
-        <button
-          type="button"
-          onClick={excluirConsulta}
-          style={{ marginTop: "10px", backgroundColor: "red", color: "white" }}
+    <main>
+      <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            salvarConsulta();
+          }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            maxWidth: "400px",
+          }}
         >
-          Excluir Consulta
-        </button>
-      )}
-    </form>
+          <h1>{id ? "Editar Consulta" : "Cadastrar Consulta"}</h1>
+
+          <label>
+            Data:
+            <input
+              type="date"
+              name="data"
+              value={form.data}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Hora:
+            <input
+              type="time"
+              name="hora"
+              value={form.hora}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Status:
+            <input
+              type="text"
+              name="status"
+              placeholder="Status"
+              value={form.status}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Motivo:
+            <input
+              type="text"
+              name="motivo"
+              placeholder="Motivo"
+              value={form.motivo}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>
+
+          {/* Botão de excluir só aparece se estamos editando */}
+          {id && (
+            <button
+              type="button"
+              onClick={excluirConsulta}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "red",
+                color: "white",
+              }}
+            >
+              Excluir Consulta
+            </button>
+          )}
+        </form>
+      </div>
+    </main>
   );
 }

@@ -1,9 +1,8 @@
-import { useEffect, useState,} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Consulta } from "../../types/tipoConsulta";
 import Botao from "../../components/BotaoProps/BotaoProps";
 import ConsultaProps from "../../components/ConsultaProps/ConsultaProps";
-
 
 export default function Consulta() {
   const [consultas, setConsultas] = useState<Consulta[]>([]);
@@ -11,13 +10,13 @@ export default function Consulta() {
 
   useEffect(() => {
     fetch("http://localhost:3001/consultas")
-      .then(res => res.json())
-      .then(data => setConsultas(data))
-      .catch(err => console.error("Erro ao buscar consultas:", err));
+      .then((res) => res.json())
+      .then((data) => setConsultas(data))
+      .catch((err) => console.error("Erro ao buscar consultas:", err));
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Consultas</h1>
 
       {consultas.length === 0 ? (
@@ -30,15 +29,17 @@ export default function Consulta() {
       ) : (
         <div>
           <ul>
-            {consultas.map(c => (
+            {consultas.map((c) => (
               <ConsultaProps key={c.id} consulta={c} />
-              ))}
+            ))}
           </ul>
 
-          <Botao texto="Adicionar Nova Consulta" onClick={() => navigate("/editar/consultas")} />
-
+          <Botao
+            texto="Adicionar Nova Consulta"
+            onClick={() => navigate("/editar/consultas")}
+          />
         </div>
       )}
-    </div>
+    </main>
   );
 }

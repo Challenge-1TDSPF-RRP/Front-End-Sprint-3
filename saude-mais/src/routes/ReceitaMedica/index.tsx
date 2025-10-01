@@ -1,4 +1,4 @@
-import { useEffect, useState,} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Receita } from "../../types/tipoReceita";
 import Botao from "../../components/BotaoProps/BotaoProps";
@@ -10,13 +10,13 @@ export default function ReceitaMedica() {
 
   useEffect(() => {
     fetch("http://localhost:3001/receitas")
-      .then(res => res.json())
-      .then(data => setReceitas(data))
-      .catch(err => console.error("Erro ao buscar receitas:", err));
+      .then((res) => res.json())
+      .then((data) => setReceitas(data))
+      .catch((err) => console.error("Erro ao buscar receitas:", err));
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Receitas Médicas</h1>
 
       {receitas.length === 0 ? (
@@ -29,14 +29,17 @@ export default function ReceitaMedica() {
       ) : (
         <div>
           <ul>
-            {receitas.map(r => (
+            {receitas.map((r) => (
               <ReceitaProps key={r.id} receita={r} />
-              ))}
+            ))}
           </ul>
 
-          <Botao texto="Adicionar Nova Receita" onClick={() => navigate("/editar/receitas")}/>
+          <Botao
+            texto="Adicionar Nova Receita"
+            onClick={() => navigate("/editar/receitas")}
+          />
         </div>
       )}
-    </div>
+    </main>
   );
 }

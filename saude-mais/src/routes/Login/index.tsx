@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import type { User } from "../../types/tipouser";
 
 export default function Login() {
-  const { register, handleSubmit, formState: { errors } } = useForm<User>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<User>();
   const navigate = useNavigate();
 
   const onSubmit = async (data: User) => {
@@ -35,28 +39,33 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          placeholder="CPF"
-          {...register("cpf", { 
-            required: "CPF é obrigatório", 
-            pattern: { 
-              value: /^\d{11}$/, 
-              message: "CPF deve conter 11 dígitos" 
-            } 
-          })}
-        />
-        {errors.cpf && <p>{errors.cpf.message}</p>}
+    <main>
+      <div>
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            placeholder="CPF"
+            {...register("cpf", {
+              required: "CPF é obrigatório",
+              pattern: {
+                value: /^\d{11}$/,
+                message: "CPF deve conter 11 dígitos",
+              },
+            })}
+          />
+          {errors.cpf && <p>{errors.cpf.message}</p>}
 
-        <button type="submit">Entrar</button>
-      </form>
+          <button type="submit">Entrar</button>
+        </form>
 
-      {/* Botão para ir para o cadastro */}
-      <button onClick={() => navigate("/register")} style={{ marginTop: "10px" }}>
-        Ir para Cadastro
-      </button>
-    </div>
+        {/* Botão para ir para o cadastro */}
+        <button
+          onClick={() => navigate("/register")}
+          style={{ marginTop: "10px" }}
+        >
+          Ir para Cadastro
+        </button>
+      </div>
+    </main>
   );
 }

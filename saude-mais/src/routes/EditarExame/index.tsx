@@ -11,19 +11,19 @@ export default function EditarExame() {
     hora: "",
     status: "",
     tipo: "",
-    local: ""
+    local: "",
   });
 
   // Carregar dados existentes se houver id
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3001/exames/${id}`)
-        .then(res => {
+        .then((res) => {
           if (!res.ok) throw new Error("Exame não encontrado");
           return res.json();
         })
-        .then(data => setForm(data))
-        .catch(err => console.error("Erro ao buscar exame:", err));
+        .then((data) => setForm(data))
+        .catch((err) => console.error("Erro ao buscar exame:", err));
     }
   }, [id]);
 
@@ -32,7 +32,7 @@ export default function EditarExame() {
   };
 
   const salvarExame = async () => {
-    if (!form.data || !form.hora || !form.status || !form.tipo || !form.local ) {
+    if (!form.data || !form.hora || !form.status || !form.tipo || !form.local) {
       alert("Preencha todos os campos!");
       return;
     }
@@ -63,12 +63,14 @@ export default function EditarExame() {
   const excluirExame = async () => {
     if (!id) return;
 
-    const confirm = window.confirm("Tem certeza que deseja excluir este exame?");
+    const confirm = window.confirm(
+      "Tem certeza que deseja excluir este exame?"
+    );
     if (!confirm) return;
 
     try {
       const resposta = await fetch(`http://localhost:3001/exames/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
       });
 
       if (resposta.ok) {
@@ -83,52 +85,98 @@ export default function EditarExame() {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        salvarExame();
-      }}
-      style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "400px" }}
-    >
-      <h1>{id ? "Editar Exame" : "Cadastrar Exame"}</h1>
-
-      <label>
-        Data:
-        <input type="date" name="data" value={form.data} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Hora:
-        <input type="time" name="hora" value={form.hora} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Status:
-        <input type="text" name="status" placeholder="Status" value={form.status} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Tipo:
-        <input type="text" name="tipo" placeholder="Tipo" value={form.tipo} onChange={handleChange} required />
-      </label>
-
-      <label>
-        Local:
-        <input type="text" name="local" placeholder="Local" value={form.local} onChange={handleChange} required/>
-      </label>
-
-      <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>
-
-      {/* Botão de excluir só aparece se estamos editando */}
-      {id && (
-        <button
-          type="button"
-          onClick={excluirExame}
-          style={{ marginTop: "10px", backgroundColor: "red", color: "white" }}
+    <main>
+      <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            salvarExame();
+          }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            maxWidth: "400px",
+          }}
         >
-          Excluir Exame
-        </button>
-      )}
-    </form>
+          <h1>{id ? "Editar Exame" : "Cadastrar Exame"}</h1>
+
+          <label>
+            Data:
+            <input
+              type="date"
+              name="data"
+              value={form.data}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Hora:
+            <input
+              type="time"
+              name="hora"
+              value={form.hora}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Status:
+            <input
+              type="text"
+              name="status"
+              placeholder="Status"
+              value={form.status}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Tipo:
+            <input
+              type="text"
+              name="tipo"
+              placeholder="Tipo"
+              value={form.tipo}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Local:
+            <input
+              type="text"
+              name="local"
+              placeholder="Local"
+              value={form.local}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <button type="submit">{id ? "Atualizar" : "Cadastrar"}</button>
+
+          {/* Botão de excluir só aparece se estamos editando */}
+          {id && (
+            <button
+              type="button"
+              onClick={excluirExame}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "red",
+                color: "white",
+              }}
+            >
+              Excluir Exame
+            </button>
+          )}
+        </form>
+      </div>
+    </main>
   );
 }
