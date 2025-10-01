@@ -12,7 +12,6 @@ export default function Register() {
 
   const onSubmit = async (data: User) => {
     try {
-      // Verifica se o CPF já existe
       const res = await fetch(`http://localhost:3001/users?cpf=${data.cpf}`);
       const existingUsers: User[] = await res.json();
 
@@ -21,7 +20,6 @@ export default function Register() {
         return;
       }
 
-      // Cria o novo usuário (sem passar 'id' para garantir numérico)
       const createRes = await fetch("http://localhost:3001/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,10 +32,7 @@ export default function Register() {
         }),
       });
 
-      // Recebe o usuário criado (JSON Server adiciona id numérico automaticamente)
       const newUser: User = await createRes.json();
-
-      // 🔹 Salva o ID do usuário logado no localStorage
       localStorage.setItem("usuarioId", String(newUser.id));
 
       alert("Cadastro realizado com sucesso!");
@@ -49,22 +44,32 @@ export default function Register() {
   };
 
   return (
-    <main>
-      <h2>Cadastro</h2>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
+    <main className="flex bg-blue-200 w-[100vw] h-[85vh] justify-center items-center">
+      <div className="flex flex-col bg-gray-50 rounded w-[50vw] p-10 items-center">
+        <h2 className="text-blue-400 font-bold text-2xl mb-6">Cadastro</h2>
+
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 w-full max-w-md"
+        >
+          {/* Nome */}
+          <label className="flex flex-col text-blue-300 font-bold">
             Nome:
             <input
-              placeholder="Nome"
+              className="bg-blue-100 p-2 rounded text-blue-400 font-bold"
+              placeholder="Digite seu nome"
               {...register("name", { required: "Nome é obrigatório" })}
             />
-            {errors.name && <p>{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            )}
           </label>
 
-          <label>
-            Cpf:
+          {/* CPF */}
+          <label className="flex flex-col text-blue-300 font-bold">
+            CPF:
             <input
+              className="bg-blue-100 p-2 rounded text-blue-400 font-bold"
               placeholder="CPF"
               {...register("cpf", {
                 required: "CPF é obrigatório",
@@ -74,23 +79,33 @@ export default function Register() {
                 },
               })}
             />
-            {errors.cpf && <p>{errors.cpf.message}</p>}
+            {errors.cpf && (
+              <p className="text-red-500 text-sm">{errors.cpf.message}</p>
+            )}
           </label>
 
-          <label>
+          {/* Data de Nascimento */}
+          <label className="flex flex-col text-blue-300 font-bold">
             Data de nascimento:
             <input
               type="date"
+              className="bg-blue-100 p-2 rounded text-blue-400 font-bold"
               {...register("birthDate", {
                 required: "Data de nascimento é obrigatória",
               })}
             />
-            {errors.birthDate && <p>{errors.birthDate.message}</p>}
+            {errors.birthDate && (
+              <p className="text-red-500 text-sm">
+                {errors.birthDate.message}
+              </p>
+            )}
           </label>
 
-          <label>
+          {/* Gênero */}
+          <label className="flex flex-col text-blue-300 font-bold">
             Gênero:
             <select
+              className="bg-blue-100 p-2 rounded text-blue-400 font-bold"
               {...register("gender", { required: "Selecione um gênero" })}
             >
               <option value="">Selecione</option>
@@ -98,12 +113,16 @@ export default function Register() {
               <option value="Feminino">Feminino</option>
               <option value="Outro">Outro</option>
             </select>
-            {errors.gender && <p>{errors.gender.message}</p>}
+            {errors.gender && (
+              <p className="text-red-500 text-sm">{errors.gender.message}</p>
+            )}
           </label>
 
-          <label>
+          {/* Telefone */}
+          <label className="flex flex-col text-blue-300 font-bold">
             Telefone:
             <input
+              className="bg-blue-100 p-2 rounded text-blue-400 font-bold"
               placeholder="Telefone"
               {...register("phone", {
                 required: "Telefone é obrigatório",
@@ -113,13 +132,25 @@ export default function Register() {
                 },
               })}
             />
-            {errors.phone && <p>{errors.phone.message}</p>}
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone.message}</p>
+            )}
           </label>
 
-          <button type="submit">Cadastrar</button>
+          {/* Botão cadastrar */}
+          <button
+            type="submit"
+            className="bg-blue-400 text-white font-bold py-2 rounded hover:bg-blue-500 transition"
+          >
+            Cadastrar
+          </button>
         </form>
 
-        <button onClick={() => navigate("/")} style={{ marginTop: "10px" }}>
+        {/* Botão voltar */}
+        <button
+          onClick={() => navigate("/")}
+          className="mt-4 text-blue-400 hover:underline"
+        >
           Ir para Login
         </button>
       </div>
