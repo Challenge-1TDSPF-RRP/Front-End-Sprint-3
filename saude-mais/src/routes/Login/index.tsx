@@ -38,7 +38,7 @@ export default function Login() {
   };
 
   return (
-    <main className="flex bg-blue-200 w-[100vw] h-[85vh] justify-center items-center">
+    <main className="flex bg-blue-200 w-[100vw] h-[90vh] justify-center items-center">
       <div className="flex flex-col bg-gray-50 rounded w-[50vw] p-10 items-center">
         <h2 className="text-blue-400 font-bold text-2xl mb-6">Login</h2>
 
