@@ -1,57 +1,6 @@
 {
-  "users": [
-    {
-      "id": "5172",
-      "name": "teste1",
-      "cpf": "11111111111",
-      "birthDate": "2025-09-30",
-      "gender": "Masculino",
-      "phone": "11111111111"
-    },
-    {
-      "id": "5282",
-      "name": "teste3",
-      "cpf": "11111111112",
-      "birthDate": "2025-09-30",
-      "gender": "Masculino",
-      "phone": "11111111112"
-    }
-  ],
-  "consultas": [
-    {
-      "id": "8dfe",
-      "data": "2025-09-18",
-      "hora": "20:24",
-      "status": "teste editar",
-      "motivo": "teste cadastro"
-    }
-  ],
-  "exames": [
-    {
-      "id": "ead9",
-      "data": "2025-09-30",
-      "hora": "09:03",
-      "status": "teste cadastro",
-      "tipo": "teste cadastro",
-      "local": "teste cadastro"
-    },
-    {
-      "id": "6155",
-      "data": "2025-09-30",
-      "hora": "09:19",
-      "status": "teste",
-      "tipo": "teste",
-      "local": "teste"
-    }
-  ],
-  "receitas": [
-    {
-      "id": "6d46",
-      "dataEmissao": "2025-09-30",
-      "medicamento": "teste",
-      "dosagem": "200mg",
-      "frequencia": "2x ao dia",
-      "duracao": "5 dias"
-    }
-  ]
+  "users": [],
+  "receitas": [],
+  "consultas": [],
+  "exames": []
 }
